@@ -1,0 +1,483 @@
+/* =========================================================
+   EndurAI GPX Integration
+   Page: Activity / GPX Viewer
+   Depends on: variables.css
+   ========================================================= */
+.gpx-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-gap);
+    padding: var(--content-padding);
+}
+
+/* Header */
+
+.gpx-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-6);
+}
+
+.gpx-header-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.gpx-eyebrow {
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--letter-wide);
+    text-transform: uppercase;
+}
+
+.gpx-title {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: var(--text-3xl);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-snug);
+    line-height: var(--line-height-tight);
+}
+
+.gpx-description {
+    max-width: 680px;
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--line-height-relaxed);
+}
+
+/* Layout */
+
+.gpx-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: var(--grid-gap);
+    align-items: start;
+}
+
+.gpx-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.gpx-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+/* Cards */
+
+.gpx-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    transition: var(--card-transition);
+    overflow: hidden;
+}
+
+.gpx-card:hover {
+    background: var(--card-bg-hover);
+    border-color: var(--card-border-hover);
+}
+
+.gpx-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 1px solid var(--color-border-soft);
+}
+
+.gpx-card-title {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-semibold);
+}
+
+.gpx-card-subtitle {
+    margin: var(--space-1) 0 0;
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+}
+
+/* Map */
+
+.gpx-map-card {
+    min-height: 620px;
+}
+
+.gpx-map,
+#activity-map {
+    width: 100%;
+    height: 620px;
+    min-height: 420px;
+    background: var(--color-bg-muted);
+    border-radius: 0 0 var(--card-radius) var(--card-radius);
+    overflow: hidden;
+}
+
+/* Leaflet Dark Styling */
+
+.leaflet-container {
+    background: var(--color-bg-muted);
+    font-family: var(--font-sans);
+}
+
+.leaflet-control-zoom,
+.leaflet-control-layers {
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--radius-md) !important;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.leaflet-control-zoom a {
+    background: rgba(10, 10, 10, 0.82) !important;
+    color: var(--text-primary) !important;
+    border-bottom: 1px solid var(--color-border-soft) !important;
+}
+
+.leaflet-control-zoom a:hover {
+    background: var(--hover-bg-strong) !important;
+}
+
+.leaflet-control-attribution {
+    background: rgba(10, 10, 10, 0.72) !important;
+    color: var(--text-muted) !important;
+    border-radius: var(--radius-sm) 0 0 0;
+    font-size: 10px;
+}
+
+.leaflet-control-attribution a {
+    color: var(--text-secondary) !important;
+}
+
+/* Upload Area */
+
+.gpx-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    padding: var(--space-8);
+    min-height: 180px;
+    background: var(--color-surface);
+    border: 1px dashed var(--color-border-strong);
+    border-radius: var(--card-radius);
+    text-align: center;
+    transition: var(--transition-hover);
+}
+
+.gpx-upload:hover {
+    background: var(--color-surface-hover);
+    border-color: var(--hover-border);
+    transform: var(--hover-transform);
+}
+
+.gpx-upload-title {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-semibold);
+}
+
+.gpx-upload-text {
+    max-width: 440px;
+    margin: 0;
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    line-height: var(--line-height-normal);
+}
+
+.gpx-file-input {
+    width: 100%;
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+}
+
+.gpx-file-input::file-selector-button {
+    height: var(--button-height-md);
+    margin-right: var(--space-3);
+    padding: 0 var(--button-padding-x);
+    background: var(--button-secondary-bg);
+    color: var(--button-secondary-text);
+    border: 1px solid var(--button-secondary-border);
+    border-radius: var(--button-radius);
+    font: inherit;
+    cursor: pointer;
+    transition: var(--transition-hover);
+}
+
+.gpx-file-input::file-selector-button:hover {
+    background: var(--button-secondary-bg-hover);
+    border-color: var(--hover-border);
+}
+
+/* Metrics */
+
+.gpx-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+    padding: var(--space-4);
+}
+
+.gpx-metric {
+    padding: var(--space-4);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-soft);
+    border-radius: var(--radius-lg);
+}
+
+.gpx-metric-label {
+    display: block;
+    margin-bottom: var(--space-2);
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+}
+
+.gpx-metric-value {
+    color: var(--text-primary);
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-snug);
+}
+
+.gpx-metric-unit {
+    margin-left: var(--space-1);
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+}
+
+/* Route Details */
+
+.gpx-detail-list {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-3);
+}
+
+.gpx-detail-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+}
+
+.gpx-detail-row:hover {
+    background: var(--hover-bg);
+}
+
+.gpx-detail-label {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+}
+
+.gpx-detail-value {
+    color: var(--text-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-medium);
+    font-family: var(--font-mono);
+}
+
+/* Buttons */
+
+.gpx-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.gpx-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--button-height-md);
+    padding: 0 var(--button-padding-x);
+    background: var(--button-secondary-bg);
+    color: var(--button-secondary-text);
+    border: 1px solid var(--button-secondary-border);
+    border-radius: var(--button-radius);
+    font-size: var(--button-font-size);
+    font-weight: var(--button-font-weight);
+    cursor: pointer;
+    transition: var(--transition-hover);
+}
+
+.gpx-button:hover {
+    background: var(--button-secondary-bg-hover);
+    border-color: var(--hover-border);
+    transform: var(--hover-transform);
+}
+
+.gpx-button-primary {
+    background: var(--button-primary-bg);
+    color: var(--button-primary-text);
+    border-color: var(--button-primary-border);
+}
+
+.gpx-button-primary:hover {
+    background: var(--button-primary-bg-hover);
+}
+
+/* Status */
+
+.gpx-status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+}
+
+.gpx-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: var(--metric-neutral);
+}
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+    .gpx-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .gpx-sidebar {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 720px) {
+    .gpx-page {
+        padding: var(--space-4);
+    }
+
+    .gpx-header {
+        flex-direction: column;
+    }
+
+    .gpx-title {
+        font-size: var(--text-2xl);
+    }
+
+    .gpx-map,
+    #activity-map {
+        height: 460px;
+    }
+
+    .gpx-metrics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.gpx-file-input-hidden {
+    display: none;
+}
+
+.gpx-hero-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.gpx-hero-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.06), transparent 28%);
+    pointer-events: none;
+}
+
+.gpx-hero-content {
+    position: relative;
+    z-index: var(--z-base);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    padding: var(--space-6);
+}
+
+.gpx-hero-title {
+    margin: var(--space-2) 0;
+    color: var(--text-primary);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-snug);
+}
+
+.gpx-hero-text {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+}
+
+.gpx-metrics-grid-large {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.gpx-metric {
+    position: relative;
+    overflow: hidden;
+}
+
+.gpx-metric::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.22),
+            transparent);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.gpx-metric:hover::after {
+    opacity: 1;
+}
+
+.gpx-status-dot {
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.06);
+}
+
+.gpx-status.is-loaded .gpx-status-dot {
+    background: var(--text-primary);
+}
+
+@media (max-width: 1100px) {
+    .gpx-metrics-grid-large {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 720px) {
+    .gpx-hero-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .gpx-metrics-grid-large {
+        grid-template-columns: 1fr;
+    }
+}
+
+#activity-map {
+    border-radius: var(--map-border-radius);
+}

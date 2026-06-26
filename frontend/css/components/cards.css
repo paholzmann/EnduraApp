@@ -1,0 +1,88 @@
+.card {
+    position: relative;
+    overflow: hidden;
+    padding: var(--card-padding);
+    border-radius: var(--card-radius);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-shadow);
+    transition: var(--card-transition);
+}
+
+.card:hover {
+    background: var(--card-bg-hover);
+    border-color: var(--card-border-hover);
+    transform: var(--hover-transform);
+    box-shadow: var(--hover-shadow);
+}
+
+.card-large {
+    min-height: 320px;
+}
+
+.card-header {
+    margin-bottom: var(--space-5);
+}
+
+.card-title {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-snug);
+    line-height: var(--line-height-snug);
+}
+
+.card-description {
+    margin: var(--space-2) 0 0;
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    line-height: var(--line-height-normal);
+}
+
+.card-placeholder {
+    min-height: 160px;
+    border-radius: var(--radius-lg);
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.025));
+    border: 1px dashed var(--color-border-strong);
+}
+
+.card-placeholder-large {
+    min-height: 220px;
+}
+
+/* =========================
+   Metric Cards
+   ========================= */
+
+.metric-card {
+    min-height: 150px;
+}
+
+.metric-label {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--letter-wide);
+    text-transform: uppercase;
+}
+
+.metric-value {
+    margin: var(--space-4) 0 var(--space-2);
+    color: var(--text-primary);
+    font-size: var(--text-3xl);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-tight);
+    line-height: var(--line-height-tight);
+}
+
+.metric-description {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--line-height-normal);
+}

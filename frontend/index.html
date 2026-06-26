@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EndurAI Performance Metrics</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/components/base.css">
+    <link rel="stylesheet" href="css/components/topbar.css">
+    <link rel="stylesheet" href="css/components/sidebar.css">
+    <link rel="stylesheet" href="css/components/buttons.css">
+    <link rel="stylesheet" href="css/components/cards.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components/forms.css">
+    <link rel="stylesheet" href="css/components/progress.css">
+    <link rel="stylesheet" href="css/components/table.css">
+    <link rel="stylesheet" href="css/components/map.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Main navigation">
+            <div class="sidebar-header">
+                <a href="#" class="brand"></a>
+                <span class="brand-mark" aria-hidden="true"></span>
+                <span class="brand-name">EndurAI</span>
+            </div>
+            <nav class="sidebar-nav" aria-label="Dashboard navigation">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" data-page="Overview">Overview</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-page="PerformanceMetrics">Performance Metrics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-page="PerformanceProjection">Performance Projection</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-page="Activity">Activity</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-page="RaceDatabase">Race Database</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="sidebar-card">
+                    <p class="sidebar-card-label">Current Focus</p>
+                    <p class="sidebar-card-title">Ultra Performance Model</p>
+                </div>
+            </div>
+        </aside>
+        <div id="app-content" class="app-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <p class="eyebrow">Dashboard</p>
+                    <h1 class="page-title">Performance Overview</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="button button-secondary" type="button">Import Race</button>
+                    <button class="button button-primary">New Analysis</button>
+                </div>
+            </header>
+            <main class="dashboard-main" id="app-main">
+
+            </main>
+        </div>
+    </div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/togeojson"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.7.0/gpx.min.js"></script>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

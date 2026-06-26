@@ -1,0 +1,126 @@
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.app-shell {
+    min-height: 100vh;
+    display: flex;
+    background: var(--app-bg);
+    color: var(--app-text);
+}
+
+.app-content {
+    flex: 1;
+    min-width: 0;
+    margin-left: var(--sidebar-width);
+}
+
+.dashboard-main {
+    width: 100%;
+    max-width: var(--layout-max-width);
+    margin: 0 auto;
+    padding: var(--space-8) var(--content-padding);
+}
+
+.dashboard-section {
+    margin-bottom: var(--space-8);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: var(--space-6);
+    margin-bottom: var(--space-5);
+}
+
+.section-description {
+    max-width: 520px;
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--line-height-normal);
+}
+
+.page-title {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-snug);
+    line-height: var(--line-height-tight);
+}
+
+.section-title {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-snug);
+    line-height: var(--line-height-snug);
+}
+
+
+@media (max-width: 900px) {
+    .sidebar {
+        width: var(--sidebar-width-collapsed);
+    }
+
+    .brand-name,
+    .sidebar-card,
+    .nav-link {
+        font-size: 0;
+    }
+
+    .nav-link {
+        justify-content: center;
+        padding: 0;
+    }
+
+    .app-content {
+        margin-left: var(--sidebar-width-collapsed);
+    }
+
+    .section-header {
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .dashboard-grid-2,
+    .dashboard-grid-3,
+    .dashboard-grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .sidebar {
+        display: none;
+    }
+
+    .app-content {
+        margin-left: 0;
+    }
+
+    .topbar {
+        height: auto;
+        min-height: var(--navbar-height);
+        align-items: flex-start;
+        flex-direction: column;
+        padding-top: var(--space-4);
+        padding-bottom: var(--space-4);
+    }
+
+    .topbar-right {
+        width: 100%;
+    }
+
+    .button {
+        flex: 1;
+    }
+
+    .dashboard-main {
+        padding: var(--space-5) var(--space-4);
+    }
+}
